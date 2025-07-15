@@ -1,6 +1,40 @@
+# Node modules
 node_modules/
+
+# Environment files
 .env
+server/.env
+client/.env
+
+# Log files
 *.log
+logs/
+server/logs/
+
+# Build artifacts
+build/
 dist/
 coverage/
+
+# System files
 .DS_Store
+Thumbs.db
+
+# Database and Docker volumes
+data/
+server_data/
+mongo-data/
+/data/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+
+# Nginx temp and cache
+nginx/cache/
+nginx/temp/
+
+# Misc
+*.bak
+*.tmp

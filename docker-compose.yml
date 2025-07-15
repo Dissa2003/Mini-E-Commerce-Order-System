@@ -1,31 +1,32 @@
-version: '3.8'
+
 
 services:
   server:
-    build: ./server
+    build: .
     container_name: backend
     env_file:
-      - .env
+      - ./server/.env
     ports:
       - "3000:3000"
     restart: unless-stopped
     volumes:
       - ./server:/app
       - server_data:/data
+    depends_on:
+      - mongo
 
-  # Uncomment the following if you have a React frontend in ./client
-  # client:
-  #   build: ./client
-  #   container_name: frontend
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - "8080:80"
-  #   depends_on:
-  #     - server
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./client:/app
+  client:
+    build: ./client
+    container_name: frontend
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - server
+    restart: unless-stopped
+    volumes:
+      - ./client:/app
 
   # Uncomment the following if you want to use Nginx as a reverse proxy
   # nginx:
@@ -39,5 +40,14 @@ services:
   #     - server
   #     - client
 
+  mongo:
+    image: mongo:6.0
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
 volumes:
-  server_data: 
+  server_data:
+  mongo-data: 
