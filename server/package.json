@@ -2,6 +2,8 @@
   "dependencies": {
     "express": "^5.1.0",
     "winston": "^3.10.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
   }
 } 

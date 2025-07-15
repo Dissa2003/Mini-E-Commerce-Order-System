@@ -8,24 +8,10 @@ services:
       - .env
     ports:
       - "3000:3000"
-    depends_on:
-      - mongodb
-    environment:
-      - MONGO_URI=mongodb://mongodb:27017/ecommerce
     restart: unless-stopped
     volumes:
       - ./server:/app
-
-  mongodb:
-    image: mongo:6
-    container_name: mongodb
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_DATABASE=ecommerce
-    volumes:
-      - mongo_data:/data/db
+      - server_data:/data
 
   # Uncomment the following if you have a React frontend in ./client
   # client:
@@ -54,4 +40,4 @@ services:
   #     - client
 
 volumes:
-  mongo_data: 
+  server_data: 
