@@ -4,8 +4,9 @@ export async function registerUser({ name, email, password }) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, password })
   });
-  if (!res.ok) throw new Error('Registration failed');
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Registration failed');
+  return data;
 }
 
 export async function loginUser({ email, password }) {
@@ -14,6 +15,7 @@ export async function loginUser({ email, password }) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
   });
-  if (!res.ok) throw new Error('Login failed');
-  return res.json();
-} 
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Login failed');
+  return data;
+}
