@@ -29,6 +29,11 @@ jobs:
           cd server
           npm ci
 
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker-compose -y
+
       - name: Build Docker image for backend
         run: |
           docker-compose build server
