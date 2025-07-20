@@ -1,56 +1,44 @@
-# Mini E-Commerce Order System (Dockerized Microservices)
+# Mini E-Commerce Order System with Dockerized Microservices
 
-This project is a production-ready, microservices-based Mini E-Commerce Order System. It uses Docker Compose to orchestrate the following services:
+## DevOps & Cloud-Readiness Features
 
-- **server/**: Node.js/Express backend (API)
-- **client/**: React frontend (optional, add if present)
-- **mongodb**: MongoDB database with persistent storage
-- **nginx/**: Nginx reverse proxy (optional, for production)
+- **Dockerized Microservices**: Frontend (React), Backend (Node.js/Express), MongoDB, and Nginx are containerized.
+- **Production Docker Compose**: See `docker-compose.prod.yml` for volumes, restart policies, and healthchecks.
+- **CI/CD Pipeline**: Automated build, test, and DockerHub push via GitHub Actions (`.github/workflows/ci-cd.yml`).
+- **Secrets Management**: Use `.env` files for environment variables (see `server/.env.example` and `client/.env.example`).
+- **Reverse Proxy**: Nginx routes traffic to frontend and backend.
 
-## Folder Structure
+## System Architecture (Text Description)
 
 ```
-project-root/
-│
-├── client/                # React frontend (optional)
-├── server/                # Node.js/Express backend
-│   ├── index.js
-│   ├── package.json
-│   └── ...
-├── nginx/                 # Nginx config (optional)
-│   └── nginx.conf
-├── docker-compose.yml     # Multi-service orchestration
-├── .env                   # Environment variables
-├── README.md              # Project documentation
-└── .github/
-    └── workflows/
-        └── deploy.yml     # GitHub Actions CI/CD
+[User]
+   |
+   v
+[Nginx Reverse Proxy] <--- Handles HTTPS, routes requests
+   |                \
+   v                 v
+[Frontend (React)]  [Backend (Node.js/Express)]
+                        |
+                        v
+                  [MongoDB Database]
 ```
 
-## Quick Start
+- **Nginx**: Entry point, routes `/api` to backend, others to frontend.
+- **Frontend**: Serves static React app.
+- **Backend**: Handles API requests, connects to MongoDB.
+- **MongoDB**: Stores user, order, and product data.
+- **All services**: Run in isolated Docker containers, orchestrated by Docker Compose.
 
-1. **Clone the repo**
-2. **Set up your `.env` file** (see `.env.example`)
-3. **Build and run all services:**
+## Quick Start (Production)
+
+1. Copy `.env.example` files to `.env` and fill in secrets.
+2. Build and start services:
    ```sh
-   docker-compose up --build
+   docker-compose -f docker-compose.prod.yml up --build -d
    ```
-4. **Access the app:**
-   - Backend: http://localhost:3000
-   - Frontend: http://localhost:8080 (if client/ present)
+3. Access the app at `http://localhost`.
 
 ## CI/CD
-- Automated with GitHub Actions: lint, test, build, push, deploy
 
-## Logging & Monitoring
-- Backend uses `winston` and `morgan` for logging
-
-## MongoDB Persistence
-- Data is stored in a Docker volume for durability
-
-## Nginx Reverse Proxy
-- Use `nginx/` config for production deployments
-
----
-
-For more details, see each service's README or the comments in `docker-compose.yml`. 
+- On push to `master`, GitHub Actions will build, test, and push Docker images to DockerHub.
+- Configure DockerHub credentials in GitHub repository secrets. 
