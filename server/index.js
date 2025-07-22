@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
+const itemRoutes = require('./routes/item');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -28,6 +29,7 @@ const logger = winston.createLogger({
 app.use(morgan('combined', { stream: { write: msg => logger.info(msg.trim()) } }));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/items', itemRoutes);
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongo:27017/ecommerce';
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
