@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import CartContext from '../CartContext'; // To be created
+import { useCart } from '../context/CartContext';
 
 const Item = () => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
   const [message, setMessage] = useState('');
-  // const { addToCart } = useContext(CartContext); // To be implemented
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -20,8 +20,9 @@ const Item = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    // addToCart(item); // To be implemented
+    addToCart(item);
     setMessage('Added to cart!');
+    setTimeout(() => setMessage(''), 1200);
   };
 
   if (!item) return <div>Loading...</div>;

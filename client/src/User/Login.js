@@ -12,8 +12,10 @@ function Login() {
     e.preventDefault();
     setError('');
     try {
-      await loginUser({ email, password });
-      navigate('/'); // Redirect to home/dashboard after login
+      const response = await loginUser({ email, password });
+      // Store token in localStorage
+      localStorage.setItem('token', response.token);
+      navigate('/profile'); // Redirect to profile page after login
     } catch (err) {
       setError(err.message);
     }

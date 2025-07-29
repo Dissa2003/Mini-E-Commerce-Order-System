@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Home = () => {
   const [items, setItems] = useState([]);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -17,7 +19,7 @@ const Home = () => {
   }, []);
 
   const handleAddToCart = (item) => {
-    // Placeholder for cart logic
+    addToCart(item);
     setMessage(`Added ${item.name} to cart!`);
     setTimeout(() => setMessage(''), 1200);
   };

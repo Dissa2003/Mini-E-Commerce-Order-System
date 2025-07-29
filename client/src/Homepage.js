@@ -1,11 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from './context/CartContext';
 
 function Homepage() {
+  const { getTotalItems } = useCart();
+
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)', color: '#fff', position: 'relative' }}>
       <Link to="/cart" style={{ position: 'absolute', top: 30, right: 40, zIndex: 10 }}>
-        <button style={{ borderRadius: '2rem', padding: '0.5rem 1.5rem', fontWeight: 'bold', fontSize: '1rem' }}>🛒 Cart</button>
+        <button style={{ 
+          borderRadius: '2rem', 
+          padding: '0.5rem 1.5rem', 
+          fontWeight: 'bold', 
+          fontSize: '1rem',
+          position: 'relative'
+        }}>
+          🛒 Cart {getTotalItems() > 0 && `(${getTotalItems()})`}
+        </button>
+      </Link>
+      <Link to="/profile" style={{ position: 'absolute', top: 30, left: 40, zIndex: 10 }}>
+        <button style={{ borderRadius: '2rem', padding: '0.5rem 1.5rem', fontWeight: 'bold', fontSize: '1rem' }}>👤 Profile</button>
       </Link>
       <h1 style={{ fontSize: '4rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '2px' }}>MCity</h1>
       <p style={{ fontSize: '1.5rem', maxWidth: '600px', textAlign: 'center', marginBottom: '2rem' }}>
