@@ -1,15 +1,49 @@
 const Item = require('../models/Item');
+const cloudinary = require('../config/cloudinary');
 
 exports.createItem = async (req, res) => {
   try {
     const { name, price, quantity, description } = req.body;
+    
     if (!name || !price || !quantity || !description) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-    const item = new Item({ name, price, quantity, description });
+
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image is required' });
+    }
+
+    // Upload image to Cloudinary
+    const uploadResult = await new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        {
+          resource_type: 'auto',
+          folder: 'ecommerce-items'
+        },
+        (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+      uploadStream.end(req.file.buffer);
+    });
+
+    // Create item with image URL
+    const item = new Item({
+      name,
+      price,
+      quantity,
+      description,
+      image: uploadResult.secure_url
+    });
+
     await item.save();
     res.status(201).json(item);
   } catch (err) {
+    console.error('Error creating item:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };

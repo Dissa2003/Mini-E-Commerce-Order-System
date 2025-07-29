@@ -20,17 +20,19 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="container fade-in" style={{ maxWidth: 400, margin: '4rem auto', textAlign: 'center' }}>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required /><br />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required /><br />
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <button type="submit">Login</button>
       </form>
-      {error && <p style={{color:'red'}}>{error}</p>}
-      <p>Don't have an account? <Link to="/register">Register</Link></p>
+      {error && <p style={{ color: '#e53935', marginTop: '1rem' }}>{error}</p>}
+      <p style={{ marginTop: '1.5rem' }}>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
     </div>
   );
 }
 
-export default Login; 
+export default Login;

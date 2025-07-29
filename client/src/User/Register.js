@@ -24,19 +24,21 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="container fade-in" style={{ maxWidth: 400, margin: '4rem auto', textAlign: 'center' }}>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required /><br />
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required /><br />
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required /><br />
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required />
+        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <button type="submit">Register</button>
       </form>
-      {error && <p style={{color:'red'}}>{error}</p>}
-      {success && <p style={{color:'green'}}>{success}</p>}
-      <p>Already have an account? <Link to="/login">Login</Link></p>
+      {error && <p style={{ color: '#e53935', marginTop: '1rem' }}>{error}</p>}
+      {success && <p style={{ color: '#43a047', marginTop: '1rem' }}>{success}</p>}
+      <p style={{ marginTop: '1.5rem' }}>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 }
 
-export default Register; 
+export default Register;
