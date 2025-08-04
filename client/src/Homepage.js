@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from './context/CartContext';
+import Home from './item/home';
 
 function Homepage() {
   const { getTotalItems } = useCart();
@@ -28,6 +29,7 @@ function Homepage() {
       <div style={{ display: 'flex', gap: '1.5rem' }}>
         <Link to="/login" style={{ padding: '0.75rem 2rem', background: '#fff', color: '#2575fc', borderRadius: '2rem', fontWeight: 'bold', textDecoration: 'none', fontSize: '1.1rem', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>Login</Link>
         <Link to="/register" style={{ padding: '0.75rem 2rem', background: '#fff', color: '#6a11cb', borderRadius: '2rem', fontWeight: 'bold', textDecoration: 'none', fontSize: '1.1rem', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>Register</Link>
+        <Link to="/item/home" style={{ padding: '0.75rem 2rem', background: '#fff', color: '#28a745', borderRadius: '2rem', fontWeight: 'bold', textDecoration: 'none', fontSize: '1.1rem', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>Go to Shopping</Link>
       </div>
     </div>
   );
