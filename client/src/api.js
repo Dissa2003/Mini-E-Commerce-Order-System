@@ -1,8 +1,28 @@
-export async function registerUser({ name, email, password }) {
+export async function registerUser({ 
+  fullName, 
+  email, 
+  password, 
+  phoneNumber, 
+  streetAddress, 
+  city, 
+  state, 
+  country, 
+  postalCode 
+}) {
   const res = await fetch('/api/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, password })
+    body: JSON.stringify({ 
+      fullName, 
+      email, 
+      password, 
+      phoneNumber, 
+      streetAddress, 
+      city, 
+      state, 
+      country, 
+      postalCode 
+    })
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || 'Registration failed');

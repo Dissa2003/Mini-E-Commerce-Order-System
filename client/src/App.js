@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { CartProvider } from './context/CartContext';
 import Login from './User/Login';
 import Register from './User/Register';
-import Homepage from './Homepage';
+import Homepage from './welcome';
 import ItemAdd from './item/itemadd';
 import Item from './item/item';
 import AdminHome from './adminhome';

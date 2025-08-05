@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
       process.env.JWT_SECRET || 'changeme',
       { expiresIn: '1d' }
     );
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    res.json({ token, user: { id: user._id, fullName: user.fullName, email: user.email } });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
   }
