@@ -40,30 +40,42 @@ function Footer() {
             <h3 style={{ color: '#2c3e50', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }}>About MCity</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/about-us" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/about" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   About Us
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/our-story" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/our-story" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Our Story
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/careers" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/careers" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Careers
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/press" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/press" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Press / Blog
                 </Link>
               </li>
@@ -75,44 +87,62 @@ function Footer() {
             <h3 style={{ color: '#2c3e50', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }}>Customer Support</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/contact" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/contact" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Contact Us
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/faqs" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/faqs" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   FAQs
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/return-policy" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/return-policy" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Return & Refund Policy
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/shipping" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d'}>
+                <Link 
+                  to="/shipping" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Shipping Information
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/track-order" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/track-order" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Order Tracking
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/payment-methods" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/payment-methods" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Payment Methods
                 </Link>
               </li>
@@ -124,44 +154,62 @@ function Footer() {
             <h3 style={{ color: '#2c3e50', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }}>Quick Links</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/shop" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/shop" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Shop All Products
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/new-arrivals" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/new-arrivals" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   New Arrivals
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/best-sellers" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/best-sellers" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Best Sellers
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/deals" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/deals" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Offers & Deals
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/gift-cards" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/gift-cards" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Gift Cards
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/size-guide" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/size-guide" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Size Guide
                 </Link>
               </li>
@@ -173,30 +221,42 @@ function Footer() {
             <h3 style={{ color: '#2c3e50', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold' }}>Legal</h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/privacy-policy" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/privacy-policy" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/terms" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/terms" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Terms & Conditions
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/cookie-policy" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/cookie-policy" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Cookie Policy
                 </Link>
               </li>
               <li style={{ marginBottom: '0.5rem' }}>
-                <Link to="/disclaimer" style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => e.target.style.color = '#667eea'}
-                onMouseLeave={(e) => e.target.style.color = '#6c757d' }}>
+                <Link 
+                  to="/disclaimer" 
+                  style={{ color: '#6c757d', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.3s ease' }}
+                  onMouseEnter={(e) => e.target.style.color = '#667eea'}
+                  onMouseLeave={(e) => e.target.style.color = '#6c757d'}
+                >
                   Disclaimer
                 </Link>
               </li>
@@ -267,79 +327,104 @@ function Footer() {
             <div style={{ marginBottom: '1rem' }}>
               <h4 style={{ color: '#2c3e50', marginBottom: '0.5rem', fontSize: '1rem', fontWeight: 'bold' }}>Follow Us</h4>
               <div style={{ display: 'flex', gap: '1rem' }}>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ 
-                  color: '#6c757d', 
-                  fontSize: '1.5rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#667eea';
-                  e.target.style.transform = 'scale(1.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#6c757d';
-                  e.target.style.transform = 'scale(1)';
-                }}>
+                <a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ 
+                    color: '#6c757d', 
+                    fontSize: '1.5rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#667eea';
+                    e.target.style.transform = 'scale(1.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#6c757d';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
                   📘
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ 
-                  color: '#6c757d', 
-                  fontSize: '1.5rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#667eea';
-                  e.target.style.transform = 'scale(1.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#6c757d';
-                  e.target.style.transform = 'scale(1)';
-                }}>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ 
+                    color: '#6c757d', 
+                    fontSize: '1.5rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#667eea';
+                    e.target.style.transform = 'scale(1.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#6c757d';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
                   📷
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ 
-                  color: '#6c757d', 
-                  fontSize: '1.5rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#667eea';
-                  e.target.style.transform = 'scale(1.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#6c757d';
-                  e.target.style.transform = 'scale(1)';
-                }}>
+                <a 
+                  href="https://twitter.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ 
+                    color: '#6c757d', 
+                    fontSize: '1.5rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#667eea';
+                    e.target.style.transform = 'scale(1.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#6c757d';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
                   🐦
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ 
-                  color: '#6c757d', 
-                  fontSize: '1.5rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#667eea';
-                  e.target.style.transform = 'scale(1.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#6c757d';
-                  e.target.style.transform = 'scale(1)';
-                }}>
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ 
+                    color: '#6c757d', 
+                    fontSize: '1.5rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#667eea';
+                    e.target.style.transform = 'scale(1.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#6c757d';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
                   💼
                 </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" style={{ 
-                  color: '#6c757d', 
-                  fontSize: '1.5rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#667eea';
-                  e.target.style.transform = 'scale(1.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#6c757d';
-                  e.target.style.transform = 'scale(1)';
-                }}>
+                <a 
+                  href="https://tiktok.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ 
+                    color: '#6c757d', 
+                    fontSize: '1.5rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#667eea';
+                    e.target.style.transform = 'scale(1.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#6c757d';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
                   🎵
                 </a>
               </div>

@@ -12,6 +12,7 @@ import UserView from './admin/userview';
 import Home from './item/home';
 import UserProfile from './User/UserProfile';
 import Cart from './Cart';
+import About from './About';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/admin/users" element={<UserView />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

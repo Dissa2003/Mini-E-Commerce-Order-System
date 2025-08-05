@@ -1,16 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 function Navbar() {
   const { getTotalItems } = useCart();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Check authentication status on component mount and when localStorage changes
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const token = localStorage.getItem('token');
+      const userDataFromStorage = localStorage.getItem('userData');
+      
+      if (token && userDataFromStorage) {
+        setIsLoggedIn(true);
+        setUserData(JSON.parse(userDataFromStorage));
+      } else {
+        setIsLoggedIn(false);
+        setUserData(null);
+      }
+    };
+
+    checkAuthStatus();
+
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      checkAuthStatus();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   // Handle scroll effect
   useEffect(() => {
@@ -25,6 +53,16 @@ function Navbar() {
     e.preventDefault();
     // Handle search functionality
     console.log('Searching for:', searchQuery);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    setUserData(null);
+    setShowDropdown(false);
+    navigate('/');
   };
 
   return (
@@ -200,10 +238,12 @@ function Navbar() {
               padding: '0.5rem 1rem',
               borderRadius: '0.5rem',
               transition: 'all 0.3s ease'
-            }}>
-              About Us
+            }}
+            onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
+            onMouseLeave={(e) => e.target.style.background = 'transparent'}>
+              About
             </Link>
-            <Link to="/deals" className="nav-link" style={{ 
+            <Link to="/help" className="nav-link" style={{ 
               color: '#2c3e50', 
               textDecoration: 'none', 
               fontWeight: '500', 
@@ -211,115 +251,11 @@ function Navbar() {
               padding: '0.5rem 1rem',
               borderRadius: '0.5rem',
               transition: 'all 0.3s ease'
-            }}>
-              Daily Deals
+            }}
+            onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
+            onMouseLeave={(e) => e.target.style.background = 'transparent'}>
+              Help
             </Link>
-            <Link to="/brands" className="nav-link" style={{ 
-              color: '#2c3e50', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              fontSize: '0.9rem',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              transition: 'all 0.3s ease'
-            }}>
-              Brand Outlet
-            </Link>
-            <Link to="/gift-cards" className="nav-link" style={{ 
-              color: '#2c3e50', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              fontSize: '0.9rem',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              transition: 'all 0.3s ease'
-            }}>
-              Gift Cards
-            </Link>
-          </div>
-
-          {/* Right Side Actions */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem'
-          }}>
-            
-            {/* Ship To */}
-            <div style={{ position: 'relative' }}>
-              <button style={{
-                background: '#f8f9fa',
-                border: '1px solid #e1e5e9',
-                color: '#2c3e50',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#e9ecef';
-                e.target.style.borderColor = '#667eea';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#f8f9fa';
-                e.target.style.borderColor = '#e1e5e9';
-              }}>
-                🚚 Ship to
-              </button>
-            </div>
-
-            {/* Sell */}
-            <Link to="/sell" style={{ textDecoration: 'none' }}>
-              <button style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                border: 'none',
-                color: '#fff',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                fontWeight: 'bold',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}>
-                💰 Sell
-              </button>
-            </Link>
-
-            {/* Watchlist */}
-            <div style={{ position: 'relative' }}>
-              <button style={{
-                background: '#f8f9fa',
-                border: '1px solid #e1e5e9',
-                color: '#2c3e50',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                cursor: 'pointer',
-                fontSize: '0.8rem',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#e9ecef';
-                e.target.style.borderColor = '#667eea';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#f8f9fa';
-                e.target.style.borderColor = '#e1e5e9';
-              }}>
-                👁️ Watchlist
-              </button>
-            </div>
 
             {/* Notifications */}
             <div style={{ position: 'relative' }}>
@@ -350,7 +286,7 @@ function Navbar() {
                   position: 'absolute',
                   top: '-5px',
                   right: '-5px',
-                  background: '#e74c3c',
+                  background: '#dc3545',
                   color: '#fff',
                   borderRadius: '50%',
                   width: '18px',
@@ -375,7 +311,7 @@ function Navbar() {
                   border: '1px solid #e1e5e9',
                   borderRadius: '0.75rem',
                   boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                  minWidth: '320px',
+                  minWidth: '280px',
                   zIndex: 1001,
                   marginTop: '0.5rem',
                   overflow: 'hidden'
@@ -432,87 +368,114 @@ function Navbar() {
               )}
             </div>
 
-            {/* My MCity */}
-            <div style={{ position: 'relative' }}>
-              <button 
-                onClick={() => setShowDropdown(!showDropdown)}
-                style={{
-                  background: '#f8f9fa',
-                  border: '1px solid #e1e5e9',
-                  color: '#2c3e50',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '0.5rem',
-                  cursor: 'pointer',
-                  fontSize: '0.8rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#e9ecef';
-                  e.target.style.borderColor = '#667eea';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#f8f9fa';
-                  e.target.style.borderColor = '#e1e5e9';
-                }}
-              >
-                👤 My MCity
-              </button>
-              
-              {/* My MCity Dropdown */}
-              {showDropdown && (
-                <div className="dropdown-menu" style={{
-                  position: 'absolute',
-                  top: '100%',
-                  right: 0,
-                  background: '#fff',
-                  border: '1px solid #e1e5e9',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                  minWidth: '220px',
-                  zIndex: 1001,
-                  marginTop: '0.5rem',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{ 
-                    padding: '1rem', 
-                    borderBottom: '1px solid #e1e5e9',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    color: '#fff'
+            {/* My MCity - Only show when logged in */}
+            {isLoggedIn && (
+              <div style={{ position: 'relative' }}>
+                <button 
+                  onClick={() => setShowDropdown(!showDropdown)}
+                  style={{
+                    background: '#f8f9fa',
+                    border: '1px solid #e1e5e9',
+                    color: '#2c3e50',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = '#e9ecef';
+                    e.target.style.borderColor = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = '#f8f9fa';
+                    e.target.style.borderColor = '#e1e5e9';
+                  }}
+                >
+                  👤 {userData?.fullName?.split(' ')[0] || 'My MCity'}
+                </button>
+                
+                {/* My MCity Dropdown */}
+                {showDropdown && (
+                  <div className="dropdown-menu" style={{
+                    position: 'absolute',
+                    top: '100%',
+                    right: 0,
+                    background: '#fff',
+                    border: '1px solid #e1e5e9',
+                    borderRadius: '0.75rem',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                    minWidth: '220px',
+                    zIndex: 1001,
+                    marginTop: '0.5rem',
+                    overflow: 'hidden'
                   }}>
-                    <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: '600' }}>👤 My Account</h4>
-                  </div>
-                  <div style={{ padding: '0.5rem 0' }}>
-                    {[
-                      { to: '/profile', icon: '👤', text: 'Profile' },
-                      { to: '/orders', icon: '📦', text: 'My Orders' },
-                      { to: '/wishlist', icon: '❤️', text: 'Wishlist' },
-                      { to: '/settings', icon: '⚙️', text: 'Settings' }
-                    ].map((item, index) => (
-                      <div key={index} style={{ 
+                    <div style={{ 
+                      padding: '1rem', 
+                      borderBottom: '1px solid #e1e5e9',
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: '#fff'
+                    }}>
+                      <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: '600' }}>👤 My Account</h4>
+                      <p style={{ margin: '0.25rem 0 0', fontSize: '0.8rem', opacity: 0.9 }}>
+                        {userData?.email}
+                      </p>
+                    </div>
+                    <div style={{ padding: '0.5rem 0' }}>
+                      {[
+                        { to: '/profile', icon: '👤', text: 'Profile' },
+                        { to: '/orders', icon: '📦', text: 'My Orders' },
+                        { to: '/wishlist', icon: '❤️', text: 'Wishlist' },
+                        { to: '/settings', icon: '⚙️', text: 'Settings' }
+                      ].map((item, index) => (
+                        <div key={index} style={{ 
+                          padding: '0.75rem 1rem',
+                          transition: 'all 0.2s ease',
+                          cursor: 'pointer'
+                        }}
+                        onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
+                        onMouseLeave={(e) => e.target.style.background = 'transparent'}>
+                          <Link to={item.to} style={{ 
+                            color: '#2c3e50', 
+                            textDecoration: 'none', 
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            fontWeight: '500',
+                            fontSize: '0.9rem'
+                          }}>
+                            <span>{item.icon}</span>
+                            {item.text}
+                          </Link>
+                        </div>
+                      ))}
+                      <div style={{ 
                         padding: '0.75rem 1rem',
                         transition: 'all 0.2s ease',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        borderTop: '1px solid #e1e5e9',
+                        marginTop: '0.5rem'
                       }}
                       onMouseEnter={(e) => e.target.style.background = '#f8f9fa'}
-                      onMouseLeave={(e) => e.target.style.background = 'transparent'}>
-                        <Link to={item.to} style={{ 
-                          color: '#2c3e50', 
-                          textDecoration: 'none', 
+                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                      onClick={handleLogout}>
+                        <div style={{ 
+                          color: '#dc3545', 
                           display: 'flex',
                           alignItems: 'center',
                           gap: '0.5rem',
                           fontWeight: '500',
                           fontSize: '0.9rem'
                         }}>
-                          <span>{item.icon}</span>
-                          {item.text}
-                        </Link>
+                          <span>🚪</span>
+                          Logout
+                        </div>
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
 
             {/* Cart */}
             <Link to="/cart" style={{ textDecoration: 'none' }}>
@@ -539,54 +502,56 @@ function Navbar() {
               </button>
             </Link>
 
-            {/* Sign In / Register */}
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  background: '#f8f9fa',
-                  border: '1px solid #e1e5e9',
-                  color: '#2c3e50',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '0.5rem',
-                  cursor: 'pointer',
-                  fontSize: '0.8rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#e9ecef';
-                  e.target.style.borderColor = '#667eea';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#f8f9fa';
-                  e.target.style.borderColor = '#e1e5e9';
-                }}>
-                  Sign In
-                </button>
-              </Link>
-              <Link to="/register" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  border: 'none',
-                  color: '#fff',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '0.5rem',
-                  cursor: 'pointer',
-                  fontSize: '0.8rem',
-                  fontWeight: 'bold',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}>
-                  Register
-                </button>
-              </Link>
-            </div>
+            {/* Sign In / Register - Only show when NOT logged in */}
+            {!isLoggedIn && (
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                  <button style={{
+                    background: '#f8f9fa',
+                    border: '1px solid #e1e5e9',
+                    color: '#2c3e50',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = '#e9ecef';
+                    e.target.style.borderColor = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = '#f8f9fa';
+                    e.target.style.borderColor = '#e1e5e9';
+                  }}>
+                    Sign In
+                  </button>
+                </Link>
+                <Link to="/register" style={{ textDecoration: 'none' }}>
+                  <button style={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    border: 'none',
+                    color: '#fff',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    cursor: 'pointer',
+                    fontSize: '0.8rem',
+                    fontWeight: 'bold',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = 'none';
+                  }}>
+                    Register
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>
